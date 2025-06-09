@@ -1,0 +1,53 @@
+{% extends "base.html" %} 
+
+{% block title %}
+    add-book
+{% endblock %}
+
+{% block card %}
+
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <!-- 4/12 width on medium+ screens -->
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Book Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputEmail1"
+              name="book_name"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Book description</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputPassword1"
+              name="book_desc"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="bookImage" class="form-label">Book Image</label>
+            <input
+              type="file"
+              class="form-control"
+              id="bookImage"
+              name="book_image"
+              accept="image/*"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

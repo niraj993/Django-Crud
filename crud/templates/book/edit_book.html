@@ -1,0 +1,58 @@
+{% extends "base.html" %} 
+
+{% block title %}
+    Edit Book
+{% endblock %}
+
+{% block card %}
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="mb-3">
+          <label for="bookName" class="form-label">Book Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="bookName"
+            name="book_name"
+            value="{{ book.book_name }}"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="bookDesc" class="form-label">Book Description</label>
+          <input
+            type="text"
+            class="form-control"
+            id="bookDesc"
+            name="book_desc"
+            value="{{ book.book_desc }}"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="bookImage" class="form-label">Book Image</label>
+          <input
+            type="file"
+            class="form-control"
+            id="bookImage"
+            name="book_image"
+            accept="image/*"
+          />
+          {% if book.book_image %}
+            <div class="mt-2">
+              <p>Current Image:</p>
+              <img src="{{ book.book_image.url }}" class="img-thumbnail" width="150" />
+            </div>
+          {% endif %}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
